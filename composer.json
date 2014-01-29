@@ -1,0 +1,22 @@
+{
+    "name": "monkeyphp/monkeyphp",
+    "type": "library",
+    "description": "",
+    "keywords": [""],
+    "homepage": "http://github.com/monkeyphp/monkeyphp",
+    "license": "Custom",
+    "authors": [
+        {
+            "name": "David White",
+            "email": "david@monkeyphp.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+         "php": ">=5.3.3",
+        "zendframework/zendframework": "2.2.*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

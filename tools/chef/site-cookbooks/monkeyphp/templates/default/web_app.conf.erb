@@ -6,6 +6,7 @@
     SetEnv APPLICATION_ENV development
 
     <Directory <%= @params[:docroot] %>>
+        DirectoryIndex index.php
         AllowOverride All
         Order allow,deny
         Allow from all
