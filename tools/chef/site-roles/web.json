@@ -9,7 +9,7 @@
             "listen_ports": "8080"
         },
         "monkeyphp": {
-            "docroot":     "/mnt/project/web",
+            "docroot":     "/mnt/project/public",
             "server_name": "monkeyphp.com.local",
             "server_port": "8080"
         },

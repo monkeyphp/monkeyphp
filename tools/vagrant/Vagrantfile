@@ -61,10 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.log_level = :debug
 
     chef.json = {
-        "web" => {
-            "servername" => servername,
-            "docroot" => "/mnt/project/public"
-        }
+        "web" => {}
     }
 
     config.vm.provider :virtualbox do |vb|

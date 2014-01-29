@@ -1,0 +1,25 @@
+{
+    "name": "monkeyphp/monkeyphp",
+    "type": "library",
+    "description": "",
+    "keywords": [""],
+    "homepage": "http://github.com/monkeyphp/monkeyphp",
+    "license": "Custom",
+    "authors": [
+        {
+            "name": "David White",
+            "email": "david@monkeyphp.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework" : "2.2.*",
+        "predis/predis"               : "v0.8.5",
+        "elasticsearch/elasticsearch" : "~0.4",
+        "michelf/php-markdown"        : "1.4.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
