@@ -1,0 +1,10 @@
+/nbproject/private/nbproject/
+nbproject/
+vendor/
+.bundle/
+Gemfile.lock
+bin/
+tools/vagrant/.vagrant/
+cookbooks/
+tmp/
+.DS_Store

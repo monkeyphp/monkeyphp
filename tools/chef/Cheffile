@@ -1,0 +1,14 @@
+site "http://community.opscode.com/api/v1"
+
+cookbook "apt"
+cookbook "build-essential"
+cookbook "xml"
+cookbook "mysql"
+cookbook "java"
+cookbook "ark"
+cookbook "redisio"
+cookbook "elasticsearch"
+cookbook "php"
+cookbook "apache2"
+cookbook "varnish"
+
