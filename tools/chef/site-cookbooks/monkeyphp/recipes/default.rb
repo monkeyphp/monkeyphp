@@ -15,6 +15,9 @@ include_recipe "varnish::apt_repo"
 include_recipe "varnish"
 include_recipe "java"
 include_recipe "elasticsearch"
+include_recipe "redisio"
+include_recipe "redisio::install"
+include_recipe "redisio::enable"
 
 package "php5-intl" do
   action :install
