@@ -1,25 +1,41 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :application, "monkeyphp.com"
 
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :scm, :git
+set :repository,  "git@github.com/monkeyphp/monkeyphp.git"
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+set :user, "deploy"
+set :use_sudo, false
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+set :branch, Capistrano::CLI.ui.ask("Which branch would you like to deploy?")
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+set :keep_releases, 3
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# before deploy cold
+before "deploy:setup", "composer_install"
+
+# after tasks
+
+desc "Execute Capistrano tasks against the UAT Environemnt"
+task :uat do
+    role :web, "uat.monkeyphp.com"
+    set :domain, "uat.monkeyphp.com"
+    set :deploy_to, "/var/www/#{domain}"
+end
+
+desc "Execute Capistrano against the PRODUCTION Envvironment"
+task :prod do
+    role :web, "www.monkeyphp.com"
+    set :domain, "www.monkeyphp.com"
+    set :deploy_to, "/var/www/{#domain}"
+end
+
+# install composer
+task :composer_install do
+    run "cd #{deploy_to} && curl -sS https://getcomposer.org/installer | php"
+end
+
+# update composer
+task :composer_update do
+    run "cd #{release_path} && php #{deploy_to}/composer.phar self-update"
+    run "cd #{release_path} && php #Pdeploy_to}/composer.phar install --no-dev --optimise-autoloader"
+end
