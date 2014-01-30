@@ -32,5 +32,10 @@
 
     $ cd $HOME/Sites/monkeyphp.com.local/tools/chef
     $ bundle exec knife solo prepare vagrant@192.168.45.46
-    $ bundle exec knife solo cook vagrant@192.168.45.46 site-roles/web.json
+    $ bundle exec knife solo cook vagrant@192.168.45.46 nodes/192.168.45.46.json
+
+### Capistrano Deploy to UAT
+
+    $ cd $HOME/Sites/monkeyphp.com.local/tools/capistrano
+    $ bundle exec cap uat deploy:setup
 
