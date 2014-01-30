@@ -5,6 +5,8 @@ vendor/
 Gemfile.lock
 bin/
 tools/vagrant/.vagrant/
+tools/vagrant/site-roles
+tools/vagrant/nodes
 cookbooks/
 tmp/
 .DS_Store
