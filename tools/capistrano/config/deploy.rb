@@ -3,7 +3,7 @@ set :application, "monkeyphp.com"
 set :scm, :git
 set :repository,  "git@github.com/monkeyphp/monkeyphp.git"
 
-set :user, "deploy"
+set :user, "vagrant"
 set :use_sudo, false
 
 set :branch, Capistrano::CLI.ui.ask("Which branch would you like to deploy?")
@@ -15,9 +15,9 @@ before "deploy:setup", "composer_install"
 
 # after tasks
 
-desc "Execute Capistrano tasks against the UAT Environemnt"
+desc "Execute Capistrano tasks against the UAT Environment"
 task :uat do
-    role :web, "uat.monkeyphp.com"
+    role :web, "192.168.45.56"
     set :domain, "uat.monkeyphp.com"
     set :deploy_to, "/var/www/#{domain}"
 end
