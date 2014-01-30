@@ -20,6 +20,6 @@
         "michelf/php-markdown"        : "1.4.0"
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "scripts"
     }
 }

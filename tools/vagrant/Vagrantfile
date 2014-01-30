@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# https://tickets.opscode.com/browse/CHEF-4725
+
 vmip = "192.168.45.46"
 servername = "monkeyphp.com.local"
 
@@ -11,13 +13,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
+  config.vm.boot_timeout = 600
 
   # Every Vagrant virtual environment requires a box to build off of.
+  # Precise 12.04
   config.vm.box = "precise64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box"
+  # config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/quantal/current/quantal-server-cloudimg-amd64-vagrant-disk1.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -51,17 +55,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     nfs: (FFI::Platform::IS_WINDOWS ? false: true)
   )
 
+  # config.vm.provision "shell", path: "./upgrade-chef.sh"
+
   config.vm.provision :chef_solo do |chef|
-    
+
+    chef.log_level = :debug
+
     chef.cookbooks_path = ["../chef/cookbooks", "../chef/site-cookbooks"]
     chef.roles_path = ["../chef/site-roles"]
 
     chef.add_role("web")
-    
-    chef.log_level = :debug
 
     chef.json = {
-        "web" => {}
+        "web" => {
+        }
     }
 
     config.vm.provider :virtualbox do |vb|

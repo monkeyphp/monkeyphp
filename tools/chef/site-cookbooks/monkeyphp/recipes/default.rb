@@ -8,7 +8,6 @@
 #
 
 include_recipe "apache2"
-
 include_recipe "php"
 include_recipe "apache2::mod_php5"
 include_recipe "varnish::apt_repo"
@@ -41,7 +40,8 @@ end
 
 web_app "application" do
     server_name node['monkeyphp']['server_name']
-    docroot node['monkeyphp']['docroot']
+    docroot     node['monkeyphp']['docroot']
+    server_port node['monkeyphp']['server_port']
 end
 
 tt = resources('template[/etc/varnish/default.vcl]')

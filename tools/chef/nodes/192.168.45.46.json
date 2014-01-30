@@ -1,9 +1,9 @@
 {
-    "name": "web",
-    "description": "",
-    "override_attributes": {},
-    "json_class": "Chef::Role",
-    "default_attributes": {
+    "run_list":[
+        "recipe[apt]",
+        "role[web]"
+    ],
+    "default": {
         "apache": {
             "apache_site_enabled": false,
             "listen_ports": ["8080", "443"]
@@ -27,10 +27,5 @@
             "cluster_name": "elasticsearch_monkeyphp",
             "bootstrap.mlockall": false
         }
-    },
-
-    "run_list": [
-        "recipe[apt]",
-        "recipe[monkeyphp]"
-    ]
+    }
 }
