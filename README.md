@@ -41,9 +41,15 @@
 
 ### Varnish
 
+- https://www.varnish-software.com/static/book/Introduction.html
+
 #### Varnish Logs
 
     $ varnishlog
+
+Only show traffic to web server
+
+    $ varnishlog -b
 
 #### Purge Varnish cache of all objects
 
