@@ -30,8 +30,6 @@ class HomeController extends AbstractActionController
     public function homeAction()
     {
         $viewModel = new ViewModel();
-        $viewModel->setTerminal(true);
-
         return $viewModel;
     }
 
@@ -43,6 +41,7 @@ class HomeController extends AbstractActionController
     public function headerAction()
     {
         $viewModel = new ViewModel();
+        $viewModel->setTemplate('home/home/header');
         $viewModel->setTerminal(true);
 
         return $viewModel;
@@ -56,8 +55,8 @@ class HomeController extends AbstractActionController
     public function footerAction()
     {
         $viewModel = new ViewModel();
+        $viewModel->setTemplate('home/home/footer');
         $viewModel->setTerminal(true);
-
         return $viewModel;
     }
 }

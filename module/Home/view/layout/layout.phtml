@@ -1,0 +1,19 @@
+<?php ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The title</title>
+    </head>
+    <body>
+        <esi:include src="/header" />
+
+        <div class="container">
+            <h1>
+                <?php echo $this->content; ?>
+            </h1>
+        </div>
+
+        <esi:include src="/footer"/>
+    </body>
+</html>

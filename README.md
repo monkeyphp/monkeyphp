@@ -41,7 +41,14 @@
 
 ### Varnish
 
+#### Varnish Logs
+
     $ varnishlog
+
+#### Purge Varnish cache of all objects
+
+    $ sudo varnishadm
+    $ ban.url .
 
 ### Iptables
 

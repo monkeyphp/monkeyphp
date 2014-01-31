@@ -11,41 +11,52 @@ return array(
     'router' => array(
         'routes' => array(
             'home' => array(
-                'type' => 'Literal',
+                'type' => 'literal',
                 'options' => array(
-                    'route' => '/'
+                    'route' => '/',
+                    'defaults' => array(
+                        'controller' => 'home_controller_home',
+                        'action'     => 'home'
+                    )
                 ),
-                'defaults' => array(
-                    'controller' => 'home_controller_home',
-                    'action'     => 'home'
-                )
             ),
             'header' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => "/header"
+                    'route' => '/header',
+                    'defaults' => array(
+                        'controller' => 'home_controller_home',
+                        'action'     => 'header'
+                    )
                 ),
-                'defaults' => array(
-                    'controller' => 'home_controller_home',
-                    'action'     => 'header'
-                )
             ),
             'footer' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/footer'
+                    'route' => '/footer',
+                    'defaults' => array(
+                        'controller' => 'home_controller_home',
+                        'action' => 'footer'
+                    ),
                 ),
-                'defaults' => array(
-                    'controller' => 'home_controller_home',
-                    'action' => 'footer'
-                ),
+                
             ),
         )
     ),
     // view manager
-    'view_maanger' => array(
+    'view_manager' => array(
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+        'doctype'                  => 'HTML5',
+        'not_found_template'       => 'error/404',
+        'exception_template'       => 'error/index',
+        'template_map' => array(
+            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'error/404'               => __DIR__ . '/../view/error/404.phtml',
+            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+        ),
         'template_path_stack' => array(
-            'home' => __DIR__ . '/../view'
-        )
-    )
+            __DIR__ . '/../view',
+        ),
+    ),
 );
