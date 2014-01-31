@@ -39,3 +39,25 @@
     $ cd $HOME/Sites/monkeyphp.com.local/tools/capistrano
     $ bundle exec cap uat deploy:setup
 
+### Varnish
+
+    $ varnishlog
+
+### Iptables
+
+- https://help.ubuntu.com/community/IptablesHowTo
+
+### List the current rules
+
+    $ sudo iptables -L
+    $ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    $ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+    $ sudo iptables -I INPUT 3 -p tcp --dport 80 -j ACCEPT
+    $ sudo iptables -I INPUT 1 -i lo -j ACCEPT
+    $ sudo iptables -A INPUT -j DROP
+
+Save the Iptables rule
+
+    $ sudo sh -c "iptables-save > /etc/iptables.rules"
+
+
