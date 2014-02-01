@@ -7,15 +7,32 @@
  */
 namespace Contact;
 
+use Contact\Form\ContactForm;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 /**
  * Description of Module
  *
  * @author David White <david@monkeyphp.com>
  */
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface
+class Module implements ServiceProviderInterface, AutoloaderProviderInterface, ConfigProviderInterface
 {
+    // http://framework.zend.com/manual/2.0/en/modules/zend.service-manager.quick-start.html#zend-service-manager-quick-start-config
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'contact_form_contact' => function($serviceManager) {
+                    $contactForm = new ContactForm();
+                    $config = $serviceManager->get('config');
+                    return $contactForm;
+                }
+            ),
+            'shared' => array()
+        );
+    }
+
     /**
      * @return array
      */
