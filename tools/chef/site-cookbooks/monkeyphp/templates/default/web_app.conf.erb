@@ -12,4 +12,10 @@
         Allow from all
     </Directory>
 
+    ErrorLog /var/log/apache2/<%= @params[:server_name] %>_error.log
+
+    LogLevel warn
+
+    CustomLog /var/log/apache2/<%= @params[:server_name] %>_access.log combined
+
 </VirtualHost>
