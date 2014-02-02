@@ -109,9 +109,7 @@ class ContactController extends AbstractActionController
                 $hydrator->hydrate($form->getData(), $contact);
                 $this->getContactTable()->saveContact($contact);
                 return $this->redirect()->toRoute('contact_route_thankyou');
-            } else {
-                var_dump($form->getMessages()); die();
-            }
+            } 
         }
 
         $viewModel = new ViewModel();
