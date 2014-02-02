@@ -41,7 +41,7 @@ class ContactForm extends Form
         parent::__construct('contact');
 
         $this->setAttribute('role', 'form');
-        
+
         // email
         $email = new Email('email', array('label' => 'Email'));
         $email->setAttributes(array('class' => 'form-control', 'placeholder' => 'Email address'));
@@ -51,11 +51,11 @@ class ContactForm extends Form
         $message->setAttributes(array('class' => 'form-control', 'placeholder' => 'Message'));
 
         // created_date
-        $createdDate = new DateTime('created_date', array('label' => 'Created'));
+        $createdDate = new DateTime('createdDate', array('label' => 'Created'));
         $createdDate->setAttributes(array());
 
         // read_date
-        $readDate = new DateTime('read_date', array('label' => 'Read'));
+        $readDate = new DateTime('readDate', array('label' => 'Read'));
         $readDate->setAttributes(array());
 
         // id

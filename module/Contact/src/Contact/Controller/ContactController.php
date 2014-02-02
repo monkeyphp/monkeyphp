@@ -11,6 +11,8 @@ namespace Contact\Controller;
 
 use Contact\Entity\Contact;
 use Contact\Form\ContactForm;
+use Contact\Hydrator\ContactHydrator;
+use Contact\Table\ContactTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -79,7 +81,7 @@ class ContactController extends AbstractActionController
     public function getContactTable()
     {
         if (! isset($this->contactTable)) {
-            $this->contactTable = $this->getServiceLocator()->get('contact_table_contact');
+            $this->contactTable = $this->getServiceLocator()->get('contact_contact_table');
         }
         return $this->contactTable;
     }
@@ -96,26 +98,24 @@ class ContactController extends AbstractActionController
         $form = $this->getContactForm();
 
         $request = $this->getRequest();
+
         if ($request->isPost()) {
             $contact = new Contact();
-
             $form->setInputFilter($contact->getInputFilter());
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-
                 $hydrator = $this->getContactHydrator();
                 $hydrator->hydrate($form->getData(), $contact);
-
                 $this->getContactTable()->saveContact($contact);
-
                 return $this->redirect()->toRoute('contact_route_thankyou');
+            } else {
+                var_dump($form->getMessages()); die();
             }
         }
 
         $viewModel = new ViewModel();
         $viewModel->setTemplate('contact/contact/contact');
-
         $viewModel->setVariable('form', $form);
         return $viewModel;
     }

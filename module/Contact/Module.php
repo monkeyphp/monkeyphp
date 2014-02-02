@@ -10,6 +10,8 @@ namespace Contact;
 
 use Contact\Entity\Contact;
 use Contact\Form\ContactForm;
+use Contact\Hydrator\ContactHydrator;
+use Contact\Table\ContactTable;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;

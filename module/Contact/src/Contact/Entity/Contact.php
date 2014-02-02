@@ -118,12 +118,15 @@ class Contact implements InputFilterAwareInterface
 
             // createdDate
             $createdDate = new Input('createdDate');
+            $createdDate->setAllowEmpty(true);
 
             // modified
             $modifiedDate = new Input('modifiedDate');
+            $modifiedDate->setAllowEmpty(true);
 
             // readDate
             $readDate = new Input('readDate');
+            $readDate->setAllowEmpty(true);
 
             // id
             $id = new Input('id');

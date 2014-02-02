@@ -39,10 +39,9 @@ class ContactHydrator extends AbstractHydrator
 
     public function hydrate(array $data, $object)
     {
-        if ($object instanceof Contact) {
+        if (! $object instanceof Contact) {
             return $object;
         }
-
-        return $this->getHydrator()->hydrator($data, $object);
+        return $this->getHydrator()->hydrate($data, $object);
     }
 }

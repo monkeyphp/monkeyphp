@@ -53,7 +53,7 @@ class ContactTable
             'email' => $contact->getEmail(),
             'message' => $contact->getMessage(),
             'created_date' => ($contact->getCreatedDate()) ? $contact->getCreatedDate()->format('Y-m-d H:i:s') : date('Y-m-d H:i:s'),
-            'read_date' => ($contact->getReadDate()) ? $contact->getReadDate()->format('Y-m-d H:i:s') : date('Y-m-d H:i:s'),
+            'modified_date' => ($contact->getReadDate()) ? $contact->getReadDate()->format('Y-m-d H:i:s') : date('Y-m-d H:i:s'),
         );
 
         if (null === ($id = ($contact->getId()))) {
