@@ -10,6 +10,7 @@ return array(
     // routes
     'router' => array(
         'routes' => array(
+            // [/contact]
             'contact' => array(
                 'type' => 'literal',
                 'options' => array(
@@ -19,7 +20,18 @@ return array(
                         'action' => 'contact'
                     )
                 )
-            )
+            ),
+            // [/thankyou]
+            'contact_route_thankyou' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/thankyou',
+                    'defaults' => array(
+                        'controller' => 'contact_controller_contact',
+                        'action' => 'thankyou'
+                    )
+                )
+            ),
         )
     ),
     // ciew_manager

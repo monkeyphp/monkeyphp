@@ -1,20 +1,27 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Module.php
+ *
+ * @category   Contact
+ * @package    Contact
+ * @author     David White <david@monkeyphp.com>
  */
 namespace Contact;
 
+use Contact\Entity\Contact;
 use Contact\Form\ContactForm;
+use Zend\Db\ResultSet\HydratingResultSet;
+use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+
 /**
- * Description of Module
+ * Module
  *
- * @author David White <david@monkeyphp.com>
+ * @category   Contact
+ * @package    Contact
+ * @author     David White <david@monkeyphp.com>
  */
 class Module implements ServiceProviderInterface, AutoloaderProviderInterface, ConfigProviderInterface
 {
@@ -23,11 +30,31 @@ class Module implements ServiceProviderInterface, AutoloaderProviderInterface, C
     {
         return array(
             'factories' => array(
-                'contact_form_contact' => function($serviceManager) {
+                // return an instance of ContactForm
+                'contact_contact_form' => function ($serviceManager) {
                     $contactForm = new ContactForm();
-                    $config = $serviceManager->get('config');
                     return $contactForm;
-                }
+                },
+                // return an instance of ContactHydrator
+                'contact_contact_hydrator' => function ($serviceManager) {
+                    $contactHydrator = new ContactHydrator();
+                    return $contactHydrator;
+                },
+                // return an instance of ContactTable
+                'contact_contact_table' => function ($serviceManager) {
+                    $tableGateway = $serviceManager->get('contact_contact_table_gateway');
+                    $table = new ContactTable($tableGateway);
+                    return $table;
+                },
+                // return an instance of TableGateway
+                'contact_contact_table_gateway' => function ($serviceManager) {
+                    $dbAdapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
+                    $hydrator = $serviceManager->get('contact_contact_hydrator');
+                    $objectPrototype = new Contact();
+                    $resultSet = new HydratingResultSet($hydrator, $objectPrototype);
+                    $tableGateway = new TableGateway('contact', $dbAdapter, null, $resultSet);
+                    return $tableGateway;
+                },
             ),
             'shared' => array()
         );

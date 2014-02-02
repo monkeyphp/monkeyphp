@@ -7,12 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "apache2"
 include_recipe "php"
+include_recipe "php::module_mysql"
+include_recipe "apache2"
 include_recipe "apache2::mod_php5"
 include_recipe "varnish::apt_repo"
 include_recipe "varnish"
-# include_recipe "java"
 include_recipe "redisio"
 include_recipe "redisio::install"
 include_recipe "redisio::enable"
