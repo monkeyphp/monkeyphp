@@ -107,7 +107,7 @@ sub vcl_miss {
 sub vcl_fetch {
 
     /** add ESI processing to main routes **/
-    if (req.url == "/") {
+    if (req.url == "/" || req.url == "/contact" || req.url == "/thankyou") {
         set beresp.do_esi = true; /* do esi processing */
     }
 

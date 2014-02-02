@@ -2,41 +2,41 @@
 
 ### Download the repository from Github
 
-    $ git clone https://githun.com/monkeyphp/monkyphp.git $HOME/Sites/monkeyphp.com.local
+    $ git clone https://githun.com/monkeyphp/monkyphp.git $HOME/Sites/development.monkeyphp.com
 
 ### Install Bundler
 
-    $ cd $HOME/Sites/monkeyphp.com.local
+    $ cd $HOME/Sites/development.monkeyphp.com
     $ gem install bundler
 
 ### Install the required Ruby Gems
 
-    $ cd $HOME/Sites/monkeyphp.com.local
+    $ cd $HOME/Sites/development.monkeyphp.com
     $ bundle install --binstubs
 
 ### Install the Cookbooks
 
-    $ cd $HOME/Sites/monkeyphp.com.local/tools/chef
+    $ cd $HOME/Sites/development.monkeyphp.com/tools/chef
     $ bundle exec librarian-chef install
 
 ### Update local hosts file
 
-    $ echo '192.168.45.46 monkeyphp.com.local' | sudo tee -a /etc/hosts
+    $ echo '192.168.45.46 development.monkeyphp.com' | sudo tee -a /etc/hosts
 
 ### Start the Virtual Machine
 
-    $ cd $HOME/Sites/monkeyphp.com.local/tools/vagrant
+    $ cd $HOME/Sites/development.monkeyphp.com/tools/vagrant
     $ vagrant up
 
 ### Provision a remote machine using Knife
 
-    $ cd $HOME/Sites/monkeyphp.com.local/tools/chef
+    $ cd $HOME/Sites/development.monkeyphp.com/tools/chef
     $ bundle exec knife solo prepare vagrant@192.168.45.46
     $ bundle exec knife solo cook vagrant@192.168.45.46 nodes/192.168.45.46.json
 
 ### Capistrano Deploy to UAT
 
-    $ cd $HOME/Sites/monkeyphp.com.local/tools/capistrano
+    $ cd $HOME/Sites/uat.monkeyphp.com/tools/capistrano
     $ bundle exec cap uat deploy:setup
 
 ### Varnish

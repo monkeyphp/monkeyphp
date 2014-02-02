@@ -16,7 +16,8 @@
         "php": ">=5.3.3",
         "zendframework/zendframework" : "2.2.*",
         "predis/predis"               : "v0.8.5",
-        "michelf/php-markdown"        : "1.4.0"
+        "michelf/php-markdown"        : "1.4.0",
+        "zendframework/zendservice-recaptcha": "2.0.1"
     },
     "config": {
         "bin-dir": "scripts"

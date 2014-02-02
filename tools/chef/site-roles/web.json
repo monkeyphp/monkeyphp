@@ -20,7 +20,7 @@
         },
         "monkeyphp": {
             "docroot":     "/mnt/project/public",
-            "server_name": "monkeyphp.com.local",
+            "server_name": "development.monkeyphp.com",
             "server_port": "8080",
             "database":    "monkeyphp",
             "db_password": "monkeyphp_user"

@@ -11,3 +11,4 @@ cookbooks/
 tmp/
 .DS_Store
 vendor
+config/autoload/local.php
